@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ASR ARENA ranglari va shriftlari */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-fon: #070707;
+  --color-oltin: #e3a929;
+  --color-oltin-quyuq: #a87414;
+  --color-oltin-och: #f7d26b;
+  --color-kumush: #e6e8eb;
+  --color-qizil: #c8242c;
+  --font-sarlavha: var(--font-exo2), sans-serif;
+  --font-matn: var(--font-manrope), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #070707;
+  color: #e6e8eb;
+  font-family: var(--font-manrope), sans-serif;
+}
+
+/* Oltin gradientli yozuv, ustidan yaltirash o'tadi */
+.oltin-matn {
+  background: linear-gradient(110deg, #a87414 20%, #f7d26b 40%, #fff3c4 50%, #f7d26b 60%, #a87414 80%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: yaltirash 5s linear infinite;
+}
+
+@keyframes yaltirash {
+  from { background-position: 150% center; }
+  to { background-position: -100% center; }
+}
+
+/* Oltin fonli tugma */
+.oltin-fon {
+  background: linear-gradient(135deg, #a87414, #e3a929 50%, #f7d26b);
+}
+
+/* Sekin oqadigan yozuv lentasi */
+.marquee-yol {
+  animation: lenta 35s linear infinite;
+}
+
+@keyframes lenta {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Foydalanuvchi animatsiyani istamasa, hammasi to'xtaydi */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-yol { animation: none; }
+  .oltin-matn { animation: none; }
 }
